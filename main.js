@@ -8,7 +8,7 @@ const schedule = require("node-schedule"); //定时器任务库
 //配置项
 
 //配置发送日期规则
-let rule = '0 30 7 * * * *'
+let rule = '0 37 10 * * *'
 // *    *    *    *    *    *
 // ┬    ┬    ┬    ┬    ┬    ┬
 // │    │    │    │    │    │
@@ -28,10 +28,10 @@ let EmianService = "163";
 //发送者邮箱账户SMTP授权码
 let EamilAuth = {
   user: "18003554931@163.com",
-  pass: "KOSVHGVRPJNLAMKA"
+  pass: "KOSVHGVRPJNLAMKA"  //163 KOSVHGVRPJNLAMKA,126 EXHODRIZOHLICQKQ
 };
 //发送者昵称与邮箱地址
-let EmailFrom = '"张飞gou" <18003554931@163.com>';
+let EmailFrom = '"十禾" <18003554931@163.com>';
 
 //接收者邮箱地
 let EmailTo = "liming@dfwsgroup.com";
@@ -204,6 +204,19 @@ function getAllDataAndSendMail(){
 }
 
 console.log('NodeMail: 开始等待目标时刻...')
+let today = new Date()
+let todaystr =
+
+      today.getFullYear() +
+
+      " / " +
+
+      (today.getMonth() + 1) +
+
+      " / " +
+
+      today.getDate();
+console.log(today.toLocaleString())
 let j = schedule.scheduleJob(rule, function() {
   console.log("执行任务");
   getAllDataAndSendMail();
